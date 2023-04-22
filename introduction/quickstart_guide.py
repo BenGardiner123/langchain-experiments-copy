@@ -20,64 +20,64 @@ prompt = "Write a poem about python and ai"
 print(llm(prompt))
 
 
-# --------------------------------------------------------------
-# Prompt Templates: Manage prompts for LLMs
-# --------------------------------------------------------------
+# # --------------------------------------------------------------
+# # Prompt Templates: Manage prompts for LLMs
+# # --------------------------------------------------------------
 
-prompt = PromptTemplate(
-    input_variables=["product"],
-    template="What is a good name for a company that makes {product}?",
-)
+# prompt = PromptTemplate(
+#     input_variables=["product"],
+#     template="What is a good name for a company that makes {product}?",
+# )
 
-prompt.format(product="Smart Apps using Large Language Models (LLMs)")
+# prompt.format(product="Smart Apps using Large Language Models (LLMs)")
 
-# --------------------------------------------------------------
-# Chains: Combine LLMs and prompts in multi-step workflows
-# --------------------------------------------------------------
+# # --------------------------------------------------------------
+# # Chains: Combine LLMs and prompts in multi-step workflows
+# # --------------------------------------------------------------
 
-llm = OpenAI()
-prompt = PromptTemplate(
-    input_variables=["product"],
-    template="What is a good name for a company that makes {product}?",
-)
+# llm = OpenAI()
+# prompt = PromptTemplate(
+#     input_variables=["product"],
+#     template="What is a good name for a company that makes {product}?",
+# )
 
-chain = LLMChain(llm=llm, prompt=prompt)
-print(chain.run("AI Chatbots for Dental Offices"))
-
-
-# --------------------------------------------------------------
-# Agents: Dynamically Call Chains Based on User Input
-# --------------------------------------------------------------
+# chain = LLMChain(llm=llm, prompt=prompt)
+# print(chain.run("AI Chatbots for Dental Offices"))
 
 
-llm = OpenAI()
-
-get_all_tool_names()
-tools = load_tools(["wikipedia", "llm-math"], llm=llm)
-
-# Finally, let's initialize an agent with the tools, the language model, and the type of agent we want to use.
-agent = initialize_agent(
-    tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True
-)
-
-# Now let's test it out!
-result = agent.run(
-    "In what year was python released and who is the original creator? Multiply the year by 3"
-)
-print(result)
+# # --------------------------------------------------------------
+# # Agents: Dynamically Call Chains Based on User Input
+# # --------------------------------------------------------------
 
 
-# --------------------------------------------------------------
-# Memory: Add State to Chains and Agents
-# --------------------------------------------------------------
+# llm = OpenAI()
 
-llm = OpenAI()
-conversation = ConversationChain(llm=llm, verbose=True)
+# get_all_tool_names()
+# tools = load_tools(["wikipedia", "llm-math"], llm=llm)
 
-output = conversation.predict(input="Hi there!")
-print(output)
+# # Finally, let's initialize an agent with the tools, the language model, and the type of agent we want to use.
+# agent = initialize_agent(
+#     tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True
+# )
 
-output = conversation.predict(
-    input="I'm doing well! Just having a conversation with an AI."
-)
-print(output)
+# # Now let's test it out!
+# result = agent.run(
+#     "In what year was python released and who is the original creator? Multiply the year by 3"
+# )
+# print(result)
+
+
+# # --------------------------------------------------------------
+# # Memory: Add State to Chains and Agents
+# # --------------------------------------------------------------
+
+# llm = OpenAI()
+# conversation = ConversationChain(llm=llm, verbose=True)
+
+# output = conversation.predict(input="Hi there!")
+# print(output)
+
+# output = conversation.predict(
+#     input="I'm doing well! Just having a conversation with an AI."
+# )
+# print(output)
